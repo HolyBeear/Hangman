@@ -1,3 +1,6 @@
+document.getElementById("gameWon").style.display = "none";
+document.getElementById("gameOverScreen").style.display = "none";
+
 const startButton = document.getElementById("startButton");
 // Add an event listener to the start button to start the game when it is clicked
 startButton.addEventListener("click", startGame);
@@ -8,7 +11,75 @@ function startGame() {
 }
 
 // Declare variables for the game
-const wordList = ["hund", "katze"]; // list of possible words to choose from
+const wordList = [
+  "baby",
+  "vater",
+  "adler",
+  "stoff",
+  "gitarre",
+  "lebensraum",
+  "eisberg",
+  "jacke",
+  "känguru",
+  "lampe",
+  "mutter",
+  "nacht",
+  "meer",
+  "pyjama",
+  "königin",
+  "waschbär",
+  "koffer",
+  "lehrer",
+  "regenschirm",
+  "urlaub",
+  "brieftasche",
+  "xylophon",
+  "jahr",
+  "zebra",
+  "apfel",
+  "buch",
+  "katze",
+  "schreibtisch",
+  "ei",
+  "frosch",
+  "ziege",
+  "honig",
+  "iglu",
+  "saft",
+  "schlüssel",
+  "zitrone",
+  "mond",
+  "krankenschwester",
+  "orange",
+  "birne",
+  "federkiel",
+  "kaninchen",
+  "socke",
+  "tisch",
+  "regenschirm",
+  "geige",
+  "uhr",
+  "röntgenbild",
+  "jo-jo",
+  "reißverschluss",
+  "alarm",
+  "boot",
+  "kuh",
+  "puppe",
+  "elefant",
+  "fächer",
+  "weintrauben",
+  "hut",
+  "leguan",
+  "qualle",
+  "drachen",
+  "löwe",
+  "becher",
+  "notizbuch",
+  "krake",
+  "stift",
+  "steppdecke",
+]; // list of possible words to choose from
 let answer = ""; // the chosen word
 const maxWrong = 6; // maximum number of wrong guesses allowed
 let mistakes = 0; // number of wrong guesses made by the player
@@ -26,6 +97,9 @@ function handleGuess() {
   // Get the value of the guess from the input field
   let guess = document.getElementById("guess");
   let chosenLetter = guess.value;
+
+  // Convert the letter to lowercase
+  chosenLetter = chosenLetter.toLowerCase();
 
   // Add the letter to the guessed array if it has not been guessed before
   if (guessed.indexOf(chosenLetter) === -1) {
@@ -88,17 +162,38 @@ function updateMistakes() {
 
 // Function to check if the game has been won
 function checkIfGameWon() {
-  // Check if the wordStatus matches the answer and alert the player if they have won
   if (wordStatus === answer) {
-    alert("You Won!!!");
+    gameWon();
+  }
+
+  function gameWon() {
+    // Hide the game container and show the game over screen
+    document.getElementById("gameWon").style.display = "flex";
+    const continueButton = document.getElementById("continueButton");
+    continueButton.addEventListener("click", function () {
+      reset();
+      document.getElementById("hangmanPic").src = "./img/0.png";
+    });
+    // Check if the wordStatus matches the answer and alert the player if they have won
   }
 }
 
 // Function to check if the game is lost
 function checkIfGameLost() {
+  const restartButton = document.getElementById("restartButton");
+  restartButton.addEventListener("click", function () {
+    reset();
+    guessed = [];
+    document.getElementById("hangmanPic").src = "./img/0.png";
+  });
+
+  function gameOver() {
+    // Hide the game container and show the game over screen
+    document.getElementById("gameOverScreen").style.display = "flex";
+  }
   // Check if the number of mistakes has reached the maximum allowed and alert the player if the game is lost
   if (mistakes === maxWrong) {
-    alert("Game Over!!!");
+    gameOver();
   }
 }
 
@@ -106,7 +201,9 @@ function checkIfGameLost() {
 function reset() {
   mistakes = 0;
   guessed = [];
-  document.getElementById("hangmanPic").src = "./img/0.jpg";
+  wrongLetters = [];
+  document.getElementById("gameWon").style.display = "none";
+  document.getElementById("gameOverScreen").style.display = "none";
   randomWord();
   guessedWord();
   updateMistakes();

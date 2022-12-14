@@ -29,6 +29,38 @@ p {
 }
 
 #startScreen {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  column-gap: 100px;
+}
+
+#gameOverScreen {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  column-gap: 100px;
+}
+
+#gameWon {
+  position: absolute;
+  z-index: 99999;
   width: 100%;
   height: 100%;
   display: flex;
