@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
+* {
+  font-family: "Indie Flower";
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0%;
+}
+
+h1 {
+  font-size: 25pt;
+}
+
+.Wrong {
+  position: absolute;
+  top: 19%;
+  right: 10%;
+}
+
+p {
+  font-size: 20pt;
+}
+
+#startScreen {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  column-gap: 100px;
+}
+
+#gameOverScreen {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  column-gap: 100px;
+}
+
+#gameWon {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  column-gap: 100px;
+}
+
+.margin {
+  margin-bottom: 200px;
+}
+
+#wordSpotlight {
+  font-size: 25pt;
+  margin-top: 100px;
+}
+
+#guess {
+  border: solid 2px;
+  width: 250px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.button {
+  color: black;
+  background-color: white;
+  border: solid 2px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 12pt;
+  margin-top: 20px;
+}
+
+.button:hover {
+  color: white;
+  background-color: black;
+}
+
+#hangmanPic {
+  position: absolute;
+  width: 10vw;
+  margin: 0;
+  z-index: 2;
+  margin-left: 110px;
+  left: 43.5%;
+  transform: translateX(-50%);
+}
+
+#crowd {
+  position: relative;
+  width: 30vw;
+  z-index: 1;
+  background-image: url("1-7.png");
+  margin-top: 110px;
+}
