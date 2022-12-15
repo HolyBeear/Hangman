@@ -86,6 +86,10 @@ let mistakes = 0; // number of wrong guesses made by the player
 let guessed = []; // array to hold letters that have been guessed by the player
 let wordStatus = null; // current state of the word as the player guesses letters
 let wrongLetters = []; // array to hold letters that have been guessed incorrectly
+let streak = 0; // streak of games won
+//add the Audios for this game
+const backgroundMusic = new Audio("../sounds/");
+backgroundMusic.play();
 
 // Function to choose a random word from the wordList array and set it as the answer
 function randomWord() {
@@ -167,6 +171,8 @@ function checkIfGameWon() {
   }
 
   function gameWon() {
+    streak = streak + 1;
+    document.getElementById("streak").innerHTML = streak;
     // Hide the game container and show the game over screen
     document.getElementById("gameWon").style.display = "flex";
     const continueButton = document.getElementById("continueButton");
@@ -188,8 +194,11 @@ function checkIfGameLost() {
   });
 
   function gameOver() {
+    document.getElementById("wordSpotlight").innerHTML = answer;
     // Hide the game container and show the game over screen
-    document.getElementById("gameOverScreen").style.display = "flex";
+    setTimeout(function () {
+      document.getElementById("gameOverScreen").style.display = "flex";
+    }, 800);
   }
   // Check if the number of mistakes has reached the maximum allowed and alert the player if the game is lost
   if (mistakes === maxWrong) {
