@@ -91,7 +91,7 @@ let streak = 0; // streak of games won
 // Set up audio elements
 const backgroundMusic = new Audio();
 backgroundMusic.volume = 0.08;
-backgroundMusic.src = "../sounds/bgSounds.mp3";
+backgroundMusic.src = "../sounds/Medieval and fantasy related music_01.mp3";
 backgroundMusic.loop = true;
 
 const wrongSound = new Audio();
