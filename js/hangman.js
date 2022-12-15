@@ -11,75 +11,7 @@ function startGame() {
 }
 
 // Declare variables for the game
-const wordList = [
-  "baby",
-  "vater",
-  "adler",
-  "stoff",
-  "gitarre",
-  "lebensraum",
-  "eisberg",
-  "jacke",
-  "känguru",
-  "lampe",
-  "mutter",
-  "nacht",
-  "meer",
-  "pyjama",
-  "königin",
-  "waschbär",
-  "koffer",
-  "lehrer",
-  "regenschirm",
-  "urlaub",
-  "brieftasche",
-  "xylophon",
-  "jahr",
-  "zebra",
-  "apfel",
-  "buch",
-  "katze",
-  "schreibtisch",
-  "ei",
-  "frosch",
-  "ziege",
-  "honig",
-  "iglu",
-  "saft",
-  "schlüssel",
-  "zitrone",
-  "mond",
-  "krankenschwester",
-  "orange",
-  "birne",
-  "federkiel",
-  "kaninchen",
-  "socke",
-  "tisch",
-  "regenschirm",
-  "geige",
-  "uhr",
-  "röntgenbild",
-  "jo-jo",
-  "reißverschluss",
-  "alarm",
-  "boot",
-  "kuh",
-  "puppe",
-  "elefant",
-  "fächer",
-  "weintrauben",
-  "hut",
-  "leguan",
-  "qualle",
-  "drachen",
-  "löwe",
-  "becher",
-  "notizbuch",
-  "krake",
-  "stift",
-  "steppdecke",
-]; // list of possible words to choose from
+const wordList = ["baby"]; // list of possible words to choose from
 let answer = ""; // the chosen word
 const maxWrong = 6; // maximum number of wrong guesses allowed
 let mistakes = 0; // number of wrong guesses made by the player
@@ -88,8 +20,25 @@ let wordStatus = null; // current state of the word as the player guesses letter
 let wrongLetters = []; // array to hold letters that have been guessed incorrectly
 let streak = 0; // streak of games won
 //add the Audios for this game
-const backgroundMusic = new Audio("../sounds/");
-backgroundMusic.play();
+// Set up audio elements
+const backgroundMusic = new Audio();
+backgroundMusic.volume = 0.08;
+backgroundMusic.src = "../sounds/bgSounds.mp3";
+backgroundMusic.loop = true;
+
+const wrongSound = new Audio();
+wrongSound.src = "../sounds/Game Over Sound Effects High Quality_01.mp3";
+
+const youWinSound = new Audio();
+youWinSound.src = "../sounds/street-fighter-ii-you-win-perfect.mp3";
+
+// Function to play the music
+function playMusic() {
+  backgroundMusic.play();
+}
+
+// Call the function when the page loads
+window.onload = playMusic;
 
 // Function to choose a random word from the wordList array and set it as the answer
 function randomWord() {
@@ -171,6 +120,7 @@ function checkIfGameWon() {
   }
 
   function gameWon() {
+    youWinSound.play();
     streak = streak + 1;
     document.getElementById("streak").innerHTML = streak;
     // Hide the game container and show the game over screen
@@ -194,6 +144,7 @@ function checkIfGameLost() {
   });
 
   function gameOver() {
+    wrongSound.play();
     document.getElementById("wordSpotlight").innerHTML = answer;
     // Hide the game container and show the game over screen
     setTimeout(function () {
